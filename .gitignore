@@ -1,0 +1,41 @@
+# Credentials and private configuration
+.env
+.env.*
+!.env.example
+config.local.json
+*.local.json
+*credentials*
+*auth*.json
+*.key
+*.pem
+*.p12
+
+# Runtime assets, recordings, personal titles, timestamps, logs
+/inbox/
+/output/
+/subtitles/
+/history.md
+*.log
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.flv
+*.srt
+*.ass
+*.jpg
+*.jpeg
+*.png
+*.lnk
+/.bili2x-*
+
+# Environments and editor state
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
