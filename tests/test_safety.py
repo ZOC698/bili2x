@@ -28,8 +28,8 @@ class SafetyTests(unittest.TestCase):
             (root / "config.json").write_text(json.dumps({"inbox_dir": "inbox", "subtitle_alignment": 6}))
             (root / "config.local.json").write_text(json.dumps({"output_dir": "private-output"}))
             config = config_module.load_config(root / "config.json")
-            self.assertEqual(config["inbox_dir"], str(root / "inbox"))
-            self.assertEqual(config["output_dir"], str(root / "private-output"))
+            self.assertEqual(config["inbox_dir"], str((root / "inbox").resolve()))
+            self.assertEqual(config["output_dir"], str((root / "private-output").resolve()))
             self.assertEqual(config["subtitle_alignment"], 6)
 
     def test_env_key_precedes_local_config(self):
