@@ -72,7 +72,7 @@ $env:DEEPSEEK_API_KEY = $credential.GetNetworkCredential().Password
 
 保留了当前工作脚本新增的画幅规范化规则（16:9 / 9:16 / 1:1 补边、`setsar=1`）以及未识别到台词时输出无字幕视频的分支。此规则可能放大或补边原画面；具体局限见审阅报告。
 
-注意：保留的 `subtitle_alignment=6` 在 ASS 中是右侧居中。若要顶部居中，应自行在本地改为 `8`。原说明混用了旧 SSA 编号和 ASS 编号，本次仅修正文档，保留实际参数。参见 [libass 格式规范](https://github.com/libass/libass/wiki/ASS-File-Format-Guide#v4-ass-style)和 [Aegisub 对齐规则](https://aegisub.org/docs/latest/ass_tags/#line-alignment)。
+`subtitle_alignment=6` 保持不变。本项目通过 FFmpeg `subtitles:force_style` 覆盖样式；本次真实渲染确认 `6` 是顶部居中。不要直接套用 ASS 文件/`\\an` 的数字键盘编号而改成 `8`：本次同条件下 `8` 实际落在左侧中部。libass 的 force-style 解析直接写入内部 Alignment，而 ASS 文件解析另有编号转换，见 [libass 实现](https://github.com/libass/libass/blob/master/libass/ass.c)。可运行 `python scripts/probe_alignment.py` 在自己的 FFmpeg 环境复核。初次发布说明曾将二者混淆，此处已更正。
 
 ## 隐私与审阅
 
